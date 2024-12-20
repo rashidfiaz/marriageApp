@@ -1,27 +1,29 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
     <div class="container">
-      <a class="navbar-brand" href="#">Marriage App</a>
+      <a class="navbar-brand" routerLink="/">Marriage App</a>
       <div class="collapse navbar-collapse" id="navbarCollapse">
-        @if (accountService.currentUer()) {
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                <li class="nav-item">
-                    <a class="nav-link active" >Matched</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" >List</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" >Messages</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" (click)="logout()">Logout</a>
-                </li>
-                </ul>
-            }
+                @if (accountService.currentUer()) {
+
+                    <li class="nav-item">
+                        <a routerLink="/members" routerLinkActive="active" class="nav-link" >Matches</a>
+                    </li>
+                    <li class="nav-item">
+                        <a routerLink="/lists" routerLinkActive="active" class="nav-link" >List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a routerLink="/messages" routerLinkActive="active" class="nav-link" >Messages</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link active" (click)="logout()">Logout</a>
+                    </li> -->
+                }
+            </ul>
+            
         
         @if (accountService.currentUer()) {
             <div class="dropdown" dropdown>
-                <a class="dropdown-toggle text-light" dropdownToggle style="text-decoration: none;">Welcome User</a>
+                <a class="dropdown-toggle text-light" dropdownToggle style="text-decoration: none;">Welcome {{accountService.currentUer()?.username | titlecase}}</a>
                     <div class="dropdown-menu" *dropdownMenu>
                         <a class="dropdown-item">Edit Profile</a>
                         <div class="dropdown-divider"></div>
@@ -34,7 +36,7 @@
             <form #loginForm="ngForm" (ngSubmit)="login()" class="d-flex" role="search">
             <input name="username" [(ngModel)]="model.username" class="form-control me-2" type="search" placeholder="Username">
             <input name="password" [(ngModel)]="model.password" class="form-control me-2" type="search" placeholder="Password">
-            <button class="btn btn-outline-success" type="submit">Login</button>
+            <button class="btn btn-success" type="submit">Login</button>
             </form>
         }
       </div>
