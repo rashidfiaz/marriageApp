@@ -1,4 +1,3 @@
-using System.Collections.Immutable;
 using API.Data;
 using API.Entities;
 using Microsoft.AspNetCore.Authorization;
