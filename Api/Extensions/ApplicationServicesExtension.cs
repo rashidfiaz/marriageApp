@@ -1,4 +1,4 @@
-using System;
+using Api.Data;
 using Api.Interfaces;
 using Api.Services;
 using API.Data;
@@ -19,6 +19,8 @@ public static class ApplicationServicesExtension
         Services.AddCors();
 
         Services.AddScoped<ITokenService, TokenService>();
+        Services.AddScoped<IUserRepository, UserRepository>();
+        Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
         return Services;
     }
