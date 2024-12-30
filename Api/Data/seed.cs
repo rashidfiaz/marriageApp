@@ -2,7 +2,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using API.Data;
-using API.Entities;
+using Api.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Api.Data;

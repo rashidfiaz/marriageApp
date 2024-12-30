@@ -1,7 +1,7 @@
 using Api.DTOs;
 using Api.Interfaces;
 using API.Data;
-using API.Entities;
+using Api.Entities;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
@@ -48,7 +48,7 @@ public class UserRepository(DataContext context, IMapper mapper) : IUserReposito
 
     public async Task<bool> SaveAllAsync()
     {
-        return await context.SaveChangesAsync() > 0;
+        return await context.SaveChangesAsync() >= 0;
 
     }
 

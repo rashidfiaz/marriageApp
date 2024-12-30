@@ -1,10 +1,8 @@
-using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Security.Cryptography;
 using System.Text;
 using Api.Interfaces;
-using API.Entities;
+using Api.Entities;
 using Microsoft.IdentityModel.Tokens;
 
 namespace Api.Services;

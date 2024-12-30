@@ -1,5 +1,5 @@
+using Api.Entities;
 using API.Data;
-using API.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers;

@@ -3,7 +3,6 @@ using Api.Extensions;
 using Api.Middleware;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 
 
 var builder = WebApplication.CreateBuilder(args);

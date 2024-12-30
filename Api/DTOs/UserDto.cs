@@ -1,5 +1,3 @@
-using System;
-
 namespace Api.DTOs;
 
 public class UserDto

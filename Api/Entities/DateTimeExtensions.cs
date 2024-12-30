@@ -1,5 +1,3 @@
-using System;
-
 namespace Api.Entities;
 
 public static class DateTimeExtensions
