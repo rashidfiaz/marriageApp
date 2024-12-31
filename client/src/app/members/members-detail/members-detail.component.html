@@ -43,7 +43,9 @@
                     </tab>
                     <tab heading="Photos" #photoTab="tab">
                         @if (photoTab.active) {
-                            <gallery [items]="images" 
+                            <gallery 
+                            [itemAutosize]="true" 
+                            [items]="images" 
                             class="gallery"></gallery>
                         }
                     </tab>

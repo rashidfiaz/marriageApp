@@ -11,14 +11,13 @@ export class AccountService {
 
   private http = inject(HttpClient);
   private baseUrl = environment.ApiUrl;
-  currentUer = signal<User | null>(null);
+  currentUser = signal<User | null>(null);
 
   login(model: any) {
     return this.http.post<User>(this.baseUrl + "account/login", model).pipe(
       map(user => {
         if (user) {
-          localStorage.setItem('user', JSON.stringify(user));
-          this.currentUer.set(user);
+          this.setCurrentUser(user);
         }
       })
     )
@@ -28,8 +27,7 @@ export class AccountService {
     return this.http.post<User>(this.baseUrl + "account/register", model).pipe(
       map(user => {
         if (user) {
-          localStorage.setItem('user', JSON.stringify(user));
-          this.currentUer.set(user);
+          this.setCurrentUser(user);
         }
         return user;
       })
@@ -38,7 +36,12 @@ export class AccountService {
 
   logout(){
     localStorage.removeItem('user');
-    this.currentUer.set(null);
+    this.currentUser.set(null);
+  }
+
+  setCurrentUser(user: User) {
+    localStorage.setItem('user', JSON.stringify(user));
+    this.currentUser.set(user);
   }
 
 }

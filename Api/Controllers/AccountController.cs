@@ -38,7 +38,10 @@ public class AccountController(DataContext context, ITokenService TokenService) 
 
     public async Task<ActionResult<UserDto>> Login(LoginDto loginDto) {
 
-        var user = await context.Users.FirstOrDefaultAsync(x => x.UserName == loginDto.Username.ToLower());
+        var user = await context.Users
+        .Include(p=>p.Photos)
+            .FirstOrDefaultAsync(x => 
+                x.UserName == loginDto.Username.ToLower());
 
         if (user == null) return Unauthorized("Username not found");
 
@@ -51,9 +54,11 @@ public class AccountController(DataContext context, ITokenService TokenService) 
             if (ComputeHash[i] != user.PasswordHash[i]) return Unauthorized("Password is not correct");
             
         }
+
         return new UserDto {
             Username = user.UserName,
-            Token = TokenService.createToken(user)
+            Token = TokenService.createToken(user),
+            PhotoUrl = user.Photos.FirstOrDefault(x => x.IsMain)?.Url
         };
 
     }
